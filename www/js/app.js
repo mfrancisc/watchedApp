@@ -4,7 +4,32 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers' ])
+.constant('watchedApiEndPoint', {
+  url: '/watchedApi'
+})
+//NOTE: We are including the constant `watchedApiEndpoint` to be used here.
+.factory('tvApi', function($http, watchedApiEndPoint) {
+  console.log('watchedApiEndpoint', watchedApiEndPoint);
+
+  var getPopularTv = function() {
+    return $http.get('/watchedApi/tv/popular')
+      .then(function(data) {
+        console.log('Got popular tv series: ', data);
+        return data;
+      });
+  };
+
+  return {
+    getPopularTv: getPopularTv
+  };
+})
+
+
+// For the real endpoint, we'd use this
+// .constant('watchedApiEndpoint', {
+//  url: 'http://cors.api.com/api'
+// })
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -45,8 +70,7 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/browse',
       views: {
         'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
+          templateUrl: 'templates/browse.html' }
       }
     })
     .state('app.playlists', {
