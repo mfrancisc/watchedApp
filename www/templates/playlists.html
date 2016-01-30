@@ -1,13 +1,13 @@
-<ion-view view-title="Playlists">
+<ion-view view-title="Popular Tv Shows">
   <ion-content>
     <ion-list>
       <ion-item ng-repeat="playlist in playlists" href="#/app/playlists/{{playlist.id}}">
         <a class="item item-thumbnail-left" href="#">
-          <img src={{playlist.poster_path_url}}>
+          <img ng-src="{{playlist.poster_path_url}}">
         <h2>
         {{playlist.name}}
         </h2>
-        <p>{{playlist.overview}}</p>
+        <p>{{playlist.vote_average}}</p>
     </a>
       </ion-item>
     </ion-list>

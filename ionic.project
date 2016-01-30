@@ -1,10 +1,10 @@
 {
   "name": "watched",
-  "app_id": "4bf01796",
+  "app_id": "bfc4e9e1",
   "proxies": [
     {
       "path": "/watchedApi",
-      "proxyUrl": "http://watched-dev.us-west-2.elasticbeanstalk.com/"
+      "proxyUrl": "http://52.34.245.128"
     }
   ]
 }

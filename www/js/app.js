@@ -10,12 +10,10 @@ angular.module('starter', ['ionic', 'starter.controllers' ])
 })
 //NOTE: We are including the constant `watchedApiEndpoint` to be used here.
 .factory('tvApi', function($http, watchedApiEndPoint) {
-  console.log('watchedApiEndpoint', watchedApiEndPoint);
 
   var getPopularTv = function() {
     return $http.get('/watchedApi/tv/popular')
       .then(function(data) {
-        console.log('Got popular tv series: ', data);
         return data;
       });
   };
