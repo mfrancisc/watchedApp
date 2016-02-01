@@ -1,33 +1,10 @@
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// 'watchedApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-// 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers' ])
-.constant('watchedApiEndPoint', {
-  url: '/watchedApi'
-})
-//NOTE: We are including the constant `watchedApiEndpoint` to be used here.
-.factory('tvApi', function($http, watchedApiEndPoint) {
-
-  var getPopularTv = function() {
-    return $http.get('/watchedApi/tv/popular')
-      .then(function(data) {
-        return data;
-      });
-  };
-
-  return {
-    getPopularTv: getPopularTv
-  };
-})
-
-
-// For the real endpoint, we'd use this
-// .constant('watchedApiEndpoint', {
-//  url: 'http://cors.api.com/api'
-// })
+// 'watchedApp.controllers' is found in controllers.js
+angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.factories' ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -48,14 +25,14 @@ angular.module('starter', ['ionic', 'starter.controllers' ])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
-    url: '/app',
+    .state('watchedApp', {
+    url: '/',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
-  .state('app.search', {
+  .state('search', {
     url: '/search',
     views: {
       'menuContent': {
@@ -64,24 +41,35 @@ angular.module('starter', ['ionic', 'starter.controllers' ])
     }
   })
 
-  .state('app.browse', {
+  .state('browse', {
       url: '/browse',
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html' }
       }
     })
-    .state('app.playlists', {
-      url: '/playlists',
+
+    .state('tv', {
+      url: '/tv',
       views: {
         'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+          templateUrl: 'templates/list.html',
+          controller: 'TvCtrl'
         }
       }
     })
 
-  .state('app.single', {
+    .state('tv.popular', {
+      url: '/tv/popular',
+      views: {
+        'menuContent@tv': {
+          templateUrl: 'templates/list.html',
+          controller: 'TvCtrl'
+        }
+      }
+    })
+
+  .state('single', {
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
@@ -91,5 +79,5 @@ angular.module('starter', ['ionic', 'starter.controllers' ])
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+  $urlRouterProvider.otherwise('/');
 });

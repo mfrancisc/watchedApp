@@ -1,6 +1,10 @@
-angular.module('starter.controllers', [])
+angular.module('watchedApp.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', AppCtrl)
+
+.controller('TvCtrl', TvCtrl);
+
+function AppCtrl ($scope, $ionicModal, $timeout) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -38,11 +42,12 @@ angular.module('starter.controllers', [])
       $scope.closeLogin();
     }, 1000);
   };
-})
+}
 
-.controller('PlaylistsCtrl', function($scope, $stateParams, tvApi) {
+function TvCtrl ($scope, $stateParams, tvApi) {
   tvApi.getPopularTv().then(function(popular){
-    $scope.playlists = popular.data.results;
+    $scope.list = popular.data.results;
+    $scope.list.title = "Popular Tv Show";
+    $scope.list.url = "tv";
   });
-
-});
+}
