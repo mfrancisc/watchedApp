@@ -25,14 +25,14 @@ angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.fac
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('watchedApp', {
-    url: '/',
+    .state('app', {
+    url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
-  .state('search', {
+  .state('app.search', {
     url: '/search',
     views: {
       'menuContent': {
@@ -41,7 +41,7 @@ angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.fac
     }
   })
 
-  .state('browse', {
+  .state('app.browse', {
       url: '/browse',
       views: {
         'menuContent': {
@@ -49,7 +49,7 @@ angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.fac
       }
     })
 
-    .state('tv', {
+    .state('app.tv', {
       url: '/tv',
       views: {
         'menuContent': {
@@ -59,8 +59,8 @@ angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.fac
       }
     })
 
-    .state('tv.popular', {
-      url: '/tv/popular',
+    .state('app.tv.popular', {
+      url: '/popular',
       views: {
         'menuContent@tv': {
           templateUrl: 'templates/list.html',
@@ -69,7 +69,7 @@ angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.fac
       }
     })
 
-  .state('single', {
+  .state('app.single', {
     url: '/playlists/:playlistId',
     views: {
       'menuContent': {
@@ -79,5 +79,5 @@ angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.fac
     }
   });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/app/tv');
 });
