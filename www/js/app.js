@@ -4,7 +4,7 @@
 // 'watchedApp' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'watchedApp.controllers' is found in controllers.js
-angular.module('watchedApp', ['ionic', 'watchedApp.controllers', 'watchedApp.factories' ])
+angular.module('watchedApp', ['ionic','ionic.service.core', 'watchedApp.controllers', 'watchedApp.factories', 'jett.ionic.filter.bar' ])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

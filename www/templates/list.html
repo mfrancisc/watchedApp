@@ -1,15 +1,15 @@
-<ion-view view-title="{{list.title}}">
-  <ion-content>
+<ion-view>
+  <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="element in list" href="#/watchedApi/{{list.url}}/{{element.id}}">
+      <ion-item ng-repeat="element in list.items" href="#/watchedApi/{{list.url}}/{{element.id}}">
         <a class="item item-thumbnail-left" href="#">
           <img ng-src="{{element.poster_path_url}}">
-        <h2>
-        {{element.name}}
-        </h2>
-        <p>{{element.vote_average}}</p>
-    </a>
+          <h2>
+            {{element.name}}
+          </h2>
+          <p>Vote: {{element.vote_average | number:1}}</p>
+        </a>
       </ion-item>
     </ion-list>
   </ion-content>
-</ion-view>
+  </ion-view>

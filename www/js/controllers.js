@@ -44,10 +44,22 @@ function AppCtrl ($scope, $ionicModal, $timeout) {
   };
 }
 
-function TvCtrl ($scope, $stateParams, tvApi) {
+function TvCtrl ($scope, $stateParams, tvApi, $ionicFilterBar) {
   tvApi.getPopularTv().then(function(popular){
-    $scope.list = popular.data.results;
-    $scope.list.title = "Popular Tv Show";
+    var vm = this;
+    vm.items = popular.data.results;
+    vm.showFilterBar = function () {
+      var filterBarInstance = $ionicFilterBar.show({
+        items: vm.items,
+        update: function (filteredItems) {
+          vm.items = filteredItems;
+        },
+        filterProperties: 'name'
+      });
+    };
+
+    $scope.list = vm;
+    $scope.list.title = "Popular Tv Shows";
     $scope.list.url = "tv";
   });
 }
