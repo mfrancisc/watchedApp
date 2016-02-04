@@ -1,5 +1,5 @@
-<ion-view>
-  <ion-content class="has-header">
+<ion-view >
+  <ion-content>
     <ion-list>
       <ion-item ng-repeat="element in list.items" href="#/watchedApi/{{list.url}}/{{element.id}}">
         <a class="item item-thumbnail-left" href="#">
@@ -13,3 +13,20 @@
     </ion-list>
   </ion-content>
   </ion-view>
+
+<ion-tabs class="tabs-positive tabs-icon-top">
+
+  <ion-tab title="My List" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/app/tv/personal">
+    <!-- Tab 1 content -->
+  </ion-tab>
+
+  <ion-tab title="Popular" icon-on="ion-ios-star" icon-off="ion-ios-star-outline" href="#/app/tv/popular">
+    <!-- Tab 2 content -->
+  </ion-tab>
+
+  <ion-tab title="All" icon-on="ion-ios-world" icon-off="ion-ios-world-outline" href="#/app/tv/all">
+    <!-- Tab 3 content -->
+  </ion-tab>
+
+</ion-tabs>
+  

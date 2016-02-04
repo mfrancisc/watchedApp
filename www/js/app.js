@@ -29,7 +29,7 @@ angular.module('watchedApp', ['ionic','ionic.service.core', 'watchedApp.controll
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller:  'TvCtrl'
+    controller:  'TvPopularCtrl'
 })
 
 .state('app.search', {
@@ -54,7 +54,7 @@ angular.module('watchedApp', ['ionic','ionic.service.core', 'watchedApp.controll
   views: {
     'menuContent': {
       templateUrl: 'templates/list.html',
-      controller: 'TvCtrl'
+      controller: 'TvPopularCtrl'
     }
   }
 })
@@ -62,9 +62,9 @@ angular.module('watchedApp', ['ionic','ionic.service.core', 'watchedApp.controll
 .state('app.tv.popular', {
   url: '/popular',
   views: {
-    'menuContent@tv': {
+    'menuContent': {
       templateUrl: 'templates/list.html',
-      controller: 'TvCtrl'
+      controller: 'TvPopularCtrl'
     }
   }
 })
@@ -78,6 +78,7 @@ angular.module('watchedApp', ['ionic','ionic.service.core', 'watchedApp.controll
     }
   }
 });
+
 // if none of the above states are matched, use this as the fallback
 $urlRouterProvider.otherwise('/app/tv');
 });

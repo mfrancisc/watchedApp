@@ -4,7 +4,7 @@
   "proxies": [
     {
       "path": "/watchedApi",
-      "proxyUrl": "http://52.34.245.128/"
+      "proxyUrl": "http://watched.app/"
     }
   ]
 }

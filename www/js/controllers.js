@@ -2,7 +2,7 @@ angular.module('watchedApp.controllers', [])
 
 .controller('AppCtrl', AppCtrl)
 
-.controller('TvCtrl', TvCtrl);
+.controller('TvPopularCtrl', TvPopularCtrl);
 
 function AppCtrl ($scope, $ionicModal, $timeout) {
 
@@ -44,7 +44,7 @@ function AppCtrl ($scope, $ionicModal, $timeout) {
   };
 }
 
-function TvCtrl ($scope, $stateParams,  $ionicFilterBar, tvApi) {
+function TvPopularCtrl ($scope, $stateParams,  $ionicFilterBar, tvApi) {
   tvApi.getPopularTv().then(function(popular){
     var vm = this, filterBarInstance;
 
@@ -60,7 +60,6 @@ function TvCtrl ($scope, $stateParams,  $ionicFilterBar, tvApi) {
     };
 
     $scope.list = vm;
-    $scope.list.title = "Popular Tv Shows";
     $scope.list.url = "tv";
   });
 }
