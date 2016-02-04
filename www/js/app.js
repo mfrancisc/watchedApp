@@ -25,59 +25,59 @@ angular.module('watchedApp', ['ionic','ionic.service.core', 'watchedApp.controll
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
 
-    .state('app', {
+  .state('app', {
     url: '/app',
     abstract: true,
     templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
+    controller:  'TvCtrl'
+})
 
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
+.state('app.search', {
+  url: '/search',
+  views: {
+    'menuContent': {
+      templateUrl: 'templates/search.html'
     }
-  })
+  }
+})
 
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html' }
-      }
-    })
+.state('app.browse', {
+  url: '/browse',
+  views: {
+    'menuContent': {
+      templateUrl: 'templates/browse.html' }
+  }
+})
 
-    .state('app.tv', {
-      url: '/tv',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/list.html',
-          controller: 'TvCtrl'
-        }
-      }
-    })
-
-    .state('app.tv.popular', {
-      url: '/popular',
-      views: {
-        'menuContent@tv': {
-          templateUrl: 'templates/list.html',
-          controller: 'TvCtrl'
-        }
-      }
-    })
-
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
+.state('app.tv', {
+  url: '/tv',
+  views: {
+    'menuContent': {
+      templateUrl: 'templates/list.html',
+      controller: 'TvCtrl'
     }
-  });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/tv');
+  }
+})
+
+.state('app.tv.popular', {
+  url: '/popular',
+  views: {
+    'menuContent@tv': {
+      templateUrl: 'templates/list.html',
+      controller: 'TvCtrl'
+    }
+  }
+})
+
+.state('app.single', {
+  url: '/playlists/:playlistId',
+  views: {
+    'menuContent': {
+      templateUrl: 'templates/playlist.html',
+      controller: 'PlaylistCtrl'
+    }
+  }
+});
+// if none of the above states are matched, use this as the fallback
+$urlRouterProvider.otherwise('/app/tv');
 });

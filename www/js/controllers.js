@@ -44,12 +44,13 @@ function AppCtrl ($scope, $ionicModal, $timeout) {
   };
 }
 
-function TvCtrl ($scope, $stateParams, tvApi, $ionicFilterBar) {
+function TvCtrl ($scope, $stateParams,  $ionicFilterBar, tvApi) {
   tvApi.getPopularTv().then(function(popular){
-    var vm = this;
+    var vm = this, filterBarInstance;
+
     vm.items = popular.data.results;
-    vm.showFilterBar = function () {
-      var filterBarInstance = $ionicFilterBar.show({
+    $scope.showFilterBar = function () {
+      filterBarInstance = $ionicFilterBar.show({
         items: vm.items,
         update: function (filteredItems) {
           vm.items = filteredItems;
